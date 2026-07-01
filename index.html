@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¿Qué tan independiente es tu hogar? | Test de Resiliencia Eléctrica</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = { theme: { extend: { colors: { amberElectric: '#FBBF24', amberElectricHover: '#F59E0B', darkNavy: '#0A0F1D', cardBg: '#151C2C' } } } }
+    </script>
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #0A0F1D; color: #F3F4F6; background-image: radial-gradient(circle at 50% 50%, #151C2C 0%, #0A0F1D 100%); }
+        .flicker-text { animation: flicker 4s infinite alternate; }
+        @keyframes flicker { 0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { opacity: 1; text-shadow: 0 0 10px rgba(251, 191, 36, 0.6); } 20%, 24%, 55% { opacity: 0.5; text-shadow: none; } }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between overflow-x-hidden">
+
+    <header class="border-b border-gray-800 bg-darkNavy/80 backdrop-blur-md sticky top-0 z-50 px-4 py-3">
+        <div class="max-w-4xl mx-auto flex items-center justify-between">
+            <div class="flex items-center space-x-2">
+                <span class="text-2xl text-amberElectric animate-pulse">⚡</span>
+                <span class="font-black text-sm md:text-base tracking-tight text-white uppercase">Independencia <span class="text-amberElectric">Total</span>
+            </div>
+            <div>
+                <span class="px-3 py-1 bg-amber-500/10 text-amberElectric border border-amber-500/20 text-xs font-bold rounded-full uppercase tracking-widest">Sorteo 31 de Julio</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow flex items-center justify-center p-4 md:p-8">
+        <div class="w-full max-w-2xl bg-cardBg rounded-2xl border border-gray-800 shadow-2xl p-6 md:p-8 transition-all duration-500 relative overflow-hidden">
+            
+            <!-- Welcome View -->
+            <div id="welcome-view" class="space-y-6 text-center">
+                <div class="inline-flex p-4 bg-amber-500/10 rounded-full text-amberElectric mb-1 animate-pulse border border-amber-500/20">
+                    <i class="fa-solid fa-solid fa-user text-4xl"></i>
+                </div>
+                <h1 class="text-2xl md:text-4xl font-extrabold text-white leading-tight">
+                    Ahorita con este sistema  
+                    <span class="block text-amberElectric flicker-text">¿Eres independiente?</span>
+                </h1>
+                <p class="text-gray-400 text-sm md:text-base max-w-lg mx-auto leading-relaxed">
+                    Si ahún tienes esa duda 
+                    <br>
+                    Descubre la verdadera razón por la que un 95% en Caja Seca ya no lo son
+                </p>
+                <button onclick="startQuiz()" class="px-8 py-4 bg-amberElectric hover:bg-amberElectricHover text-darkNavy font-black rounded-xl shadow-lg transform transition-all text-base w-full md:w-auto uppercase tracking-wider">
+                    Comienza Aquí <i class="fa-solid fa-bolt ml-1"></i>
+                </button>
+            </div>
+
+            <!-- Quiz View -->
+            <div id="quiz-view" class="hidden space-y-6">
+                <div class="flex justify-between items-center text-xs text-gray-400 mb-1">
+                    <span id="question-index-label" class="font-bold text-amberElectric uppercase tracking-wider">Pregunta 1 de 3</span>
+                </div>
+                <h3 id="question-text" class="text-lg md:text-xl font-bold text-white leading-snug"></h3>
+                <div id="options-container" class="space-y-3"></div>
+            </div>
+
+            <!-- Calculating View -->
+            <div id="calculating-view" class="hidden text-center py-10 space-y-6">
+                <div class="text-4xl animate-bounce">🦟</div>
+                <h3 class="text-white font-bold text-lg">Analizando tu nivel de independencia...</h3>
+            </div>
+
+            <!-- Results View -->
+            <div id="results-view" class="hidden space-y-6">
+                <div class="text-center space-y-2">
+                    <h2 class="text-xl font-bold text-gray-400">Estas diagnosticado como:</h2>
+                    <h2 id="profile-title" class="text-2xl md:text-3xl font-black text-amberElectric uppercase"></h2>
+                </div>
+                <div class="p-5 bg-gray-900 rounded-xl border border-amber-500/20 space-y-4">
+                    <p id="diagnostic-text" class="text-gray-300 text-sm leading-relaxed"></p>
+                </div>
+                <div class="bg-gradient-to-br from-amber-500/10 to-transparent border border-amber-500/20 rounded-xl p-6 space-y-4 text-center">
+                    <h4 class="font-extrabold text-white text-lg">La independencia no se decreta, se compra o se sortea.</h4>
+                    <p class="text-xs text-gray-300">
+                        Ya que corpoelec no te da garantías, te toca a ti asegurar tu propia energía. Existe una oportunidad donde el 31 de julio podrás dejar de ser esclavo del sistema y tener tu propia planta. Si quieres ser tú, aquí está tu oportunidad, si no, siempre puedes seguir practicando tu habilidad de abanicarte con el primer cartón que consigas.
+                    </p>
+                    <a href="https://nailmidas9-design.github.io/juegaygana-plantahonda/" target="_blank" class="block w-full py-4 bg-amberElectric text-darkNavy font-black rounded-xl hover:bg-amber-500 transition uppercase tracking-widest text-sm">
+                        Quiero participar <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const questions = [
+            { text: "Se va la luz a mitad de la noche. Hace más calor que en un horno de panadería y escuchas el primer zancudo loco. ¿Qué haces?", options: [{letter: "A", text: "Agarro el teléfono rápido para ver si el vecino ya montó un estado de WhatsApp mentándole la madre a todo el mundo.", value: 'A'}, {letter: "B", text: "Salgo al porche sin camisa a ver si todo el barrio está en la misma desgracia para por lo menos echar un chisme a oscuras.", value: 'B'}, {letter: "C", text: "Trato de volverme a dormir sudando como un pollo, peleando con el zancudo con una almohada y perdiendo la dignidad.", value: 'C'}] },
+            { text: "Si abres la nevera al mediodía y el hielo del congelador ya parece agua de lluvia. ¿Qué es lo primero que piensas?", options: [{letter: "A", text: "\"Qué molleja... se me va a dañar la nevera que no le tengo protector, y tan caras que estan\".", value: 'A'}, {letter: "B", text: "\"Toca tomar agua tibia otra vez... ya parezco camello de desierto\".", value: 'B'}, {letter: "C", text: "Cierro la puerta rapidito y con cuidado, como si el frío fuera a salir corriendo y yo pudiera salvarlo con la mente.", value: 'C'}] },
+            { text: "El teléfono va por 12% de batería, estás terminando de ver algo buenísimo o atendiendo un cliente y... ¡pum!, se apaga todo. Tu reacción inmediata es:", options: [{letter: "A", text: "Soltar un grito o un insulto tan fuerte que se escucha desde Caja Seca hasta Nueva Bolivia.", value: 'A'}, {letter: "B", text: "Resignación total. Me quedo mirando fijamente el techo como filósofo pensando en las malas decisiones de mi vida.", value: 'B'}, {letter: "C", text: "Sacar mis cálculos. \"Bueno, si se fue a las 6:00, seguro llega como a las 10:00...\" (sacando cuentas matemáticas como toda una licenciada).", value: 'C'}] }
+        ];
+
+        let currentQuestionIndex = 0;
+        let answers = [];
+
+        function startQuiz() {
+            document.getElementById('welcome-view').classList.add('hidden');
+            document.getElementById('quiz-view').classList.remove('hidden');
+            renderQuestion();
+        }
+
+        function renderQuestion() {
+            const q = questions[currentQuestionIndex];
+            document.getElementById('question-index-label').innerText = `Pregunta ${currentQuestionIndex + 1} de 3`;
+            document.getElementById('question-text').innerText = q.text;
+            const container = document.getElementById('options-container');
+            container.innerHTML = '';
+            q.options.forEach(opt => {
+                const btn = document.createElement('button');
+                btn.className = "w-full p-4 border border-gray-800 rounded-xl bg-gray-900 hover:border-amber-500 text-left transition text-sm flex gap-3";
+                btn.innerHTML = `<span class="font-black text-amberElectric">${opt.letter}</span> ${opt.text}`;
+                btn.onclick = () => {
+                    answers.push(opt.value);
+                    currentQuestionIndex++;
+                    if(currentQuestionIndex < questions.length) renderQuestion();
+                    else transitionToResults();
+                };
+                container.appendChild(btn);
+            });
+        }
+
+        function transitionToResults() {
+            document.getElementById('quiz-view').classList.add('hidden');
+            document.getElementById('calculating-view').classList.remove('hidden');
+            setTimeout(() => {
+                document.getElementById('calculating-view').classList.add('hidden');
+                calculateProfile();
+                document.getElementById('results-view').classList.remove('hidden');
+            }, 1500);
+        }
+
+        function calculateProfile() {
+            const countA = answers.filter(x => x === 'A').length;
+            const countB = answers.filter(x => x === 'B').length;
+            const countC = answers.filter(x => x === 'C').length;
+
+            let title = "";
+            let text = "";
+
+            if (countA >= 2) {
+                title = "El Optimista del Caos";
+                text = "Tu táctica es la denuncia digital. Crees que si el vecino sabe que estás molesto, la luz volverá por pura presión social. Pero admitámoslo: el algoritmo de Corpoelec no lee tus estados. Estás harto de que tu vida dependa de un sistema que no funciona. No necesitas más quejas, necesitas tu propia Independencia.";
+            } else if (countB >= 2) {
+                title = "El Romeo del Apagón";
+                text = "Cuando se va la luz, tú y tu teléfono entran en un romance tóxico: le das scroll al infinito, consumes datos hasta que se te acaben y te quedas borrando capturas de memes y pagomovil que ni te imaginas que tenias. Tu 'independencia' actual tiene la duración de lo que le quede de carga a tu celular, el mismo tiempo que le dura la voluntad a corpoelec. A partir de ahora solo tienes dos opciones: buscas independizarte o sigues ese amor enfermizo.";
+            } else {
+                title = "El Candidato a la Planta (En Espera)";
+                text = "Eres el que más necesitas independizarte, pero sigues rezándole a Corpoelec para que no te la quite ahorita, sino más tarde. Vives como un fisico, calculando el tiempo a ver a que hora llega. No necesitas más paciencia, necesitas dejar de esperar el milagro y tomar el control.";
+            }
+            
+            document.getElementById('profile-title').innerText = title;
+            document.getElementById('diagnostic-text').innerText = text;
+        }
+    </script>
+</body>
+</html>
